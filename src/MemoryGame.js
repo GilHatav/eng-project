@@ -28,7 +28,7 @@ const MemoryGame = (props) => {
     useEffect(() => {
         if (chosenWords.english !== '' && chosenWords.hebrew !== '') {
             const newList = gameWords.filter((word) => word.hebrew !== chosenWords.hebrew || word.english !== chosenWords.english)
-            if (newList.length < chosenWords.length) {
+            if (newList.length < gameWords.length) {
                 alert('Good Job');
             }
             setGameWords(newList)
@@ -49,6 +49,15 @@ const MemoryGame = (props) => {
         })
     }
 
+    function shuffleList(list) {
+        const shuffledList = [...list];
+        for (let i = shuffledList.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffledList[i], shuffledList[j]] = [shuffledList[j], shuffledList[i]];
+        }
+        return shuffledList;
+      }
+      
 
     return (
         <div className="word-card-container">
