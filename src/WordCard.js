@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './WordCard.css'; // Import the CSS file for styling
 
-const WordCard = () => {
-  const [words, setWords] = useState([]);
 
-  useEffect(() => {
-    // Fetch the words from the JSON file (assuming it's in the public folder)
-    fetch('./words.json')
-      .then((response) => response.json())
-      .then((data) => {setWords(data.words)});
-  }, []);
+const WordCard = (props) => {
+  const { words } = props;
+  
 
   return (
     <div className="word-card-container">
